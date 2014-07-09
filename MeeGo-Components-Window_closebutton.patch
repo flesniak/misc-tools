@@ -1,0 +1,47 @@
+*** Window.qml.original	Fri May  6 04:08:59 2011
+--- Window.qml	Tue Mar 20 14:18:25 2012
+***************
+*** 588,594 ****
+                      Image {
+                          id: windowMenuButton
+  
+!                         anchors.right: parent.right
+                          visible: actionMenu.height > 0 || customActionMenu  // hide action button when actionMenu is empty
+  
+                          source: if( windowMenuButtonMouseArea.pressed || window.actionMenuPresent) {
+--- 588,594 ----
+                      Image {
+                          id: windowMenuButton
+  
+!                         anchors.right: spacer3.left
+                          visible: actionMenu.height > 0 || customActionMenu  // hide action button when actionMenu is empty
+  
+                          source: if( windowMenuButtonMouseArea.pressed || window.actionMenuPresent) {
+***************
+*** 634,639 ****
+--- 634,658 ----
+  
+                      } //end windowMenuButton
+  
++                     Image {
++                         id: spacer3
++ 
++                         anchors.right: windowCloseButton.left
++                         visible: windowMenuButton.visible
++                         source: "image://themedimage/widgets/common/toolbar/toolbar-item-separator"
++                     }
++ 
++                     Image { //begin windowCloseButton
++                         id: windowCloseButton
++                         anchors.right: parent.right
++                         source: "image://meegotheme/icons/toolbar/dev-exit-selected"
++ 
++                         MouseArea {
++                             id: windowCloseButtonMouseArea
++                             anchors.fill: windowCloseButton
++                             onClicked: mainWindow.goHome();
++                         }
++                     } //end windowCloseButton
+  
+                  } //end titleBar
+              } //end toolBar
